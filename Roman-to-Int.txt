@@ -1,0 +1,23 @@
+JavaScripts-hoisting:
+	Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).
+
+	-In JavaScript, a variable can be declared after it has been used.
+
+	-In other words; a variable can be used before it has been declared.
+
+	Example:
+		X = 5; Assignment
+		Var X; Declaration
+
+RomanToInt:
+	Var romanToInt = function(s){
+		const Map = {I:1,V:5, X:10, L:50, C:100, D:500, M:1000};
+		let result = 0;
+
+		s.split('').forEach((num,i)=>{
+			if(Map[num] < Map[s[i +1]]) res -= Map[num];
+			else res += Map[num]
+		})
+
+		return result;
+	}
