@@ -1,0 +1,52 @@
+/*
+Given an array a of length n and an integer k, find the number of indices 1 <= i <= n - k such that the subarray 
+[ai, …, ai+k] with length k+1 (not with length k) has the following property: If you multiply the first element by 2^0, 
+the second element by 2^1,..., and the (k+1)-st element by 2^k, then this subarray is sorted in strictly increasing order.
+More formally, count the number of indices 1 <= i <= n - k such that 2^0 * a^i < 2^1 * ai+1 < 2^2  * ai+2 < …. < 2^k * ai+k
+
+Example:
+
+Input: arr = [ 20, 22, 19, 84 ] k = 2
+k+1 = 3
+0 - 2
+[20,22,19] = 20*2^0 , 22 * 2^1, 19 * 2^2 = 20 < 44 < 76 = True
+1 - 3
+[22,19,84] = True ans = 2
+Output: 2
+
+Input: arr = [ 22, 12, 16, 4, 3, 22, 12 ] k = 3
+Output: 1
+
+
+tests = parseInt(readline());
+for(var i = 0; i < tests ; i++){
+    var input = readline().split(" ").map(x => parser(x));
+    var len = input[0]
+    var k = input[1]
+    var arr = readline().split(" ").map(x => parser(x));
+    var answer = solve(arr, k)
+    print(answer)
+    
+}
+
+function parser(x){
+    return parseInt(x);
+}
+*/
+function solve(arr, k){
+    // create sub arrays of length k+1 
+    // we check every sub array if it satisfies the condition
+    count = 0
+    for(let i=0; i<arr.length-k; i++){
+        for(let j=2; j<i+k-1; j++){
+            //k=2+1 =3
+            //[ 22, 12, 16, 4, 3, 22, 12 ]
+            if(arr[j] * Math.pow(2,j) < arr[j+1] * Math.pow(2,j)) count++
+        }
+    }
+    //You have left 5 minutes try to be fast enough
+    //
+    return count
+    
+}
+console.log(solve([ 20, 22, 19, 84 ], 2))
