@@ -1,12 +1,15 @@
+//iterative
 const towSum = (arr,target) =>{
-  
-  for(let i =0; i < arr.length; i++){
-  found = target - arr[i];
-    if (arr.includes(found)){
-      console.log(arr.indexOf(found),i);
-      break;
+
+  for(let i=0; i < arr.length; i++){
+    for(let j = i+1; j<arr.length; j++){
+        if(arr[i]+arr[j]==target){
+          let found = [i,j];
+          return found;
+        }
     }
   }
+  return 'not found'
 }
 
-towSum([1,2,3,4],6);
+console.log(towSum([1,2,3,4],2));
