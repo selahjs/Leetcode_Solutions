@@ -1,4 +1,4 @@
-//iterative
+//time complexity O(n2), space complexity O(1)
 const towSum = (arr,target) =>{
 
   for(let i=0; i < arr.length; i++){
@@ -12,4 +12,18 @@ const towSum = (arr,target) =>{
   return 'not found'
 }
 
-console.log(towSum([1,2,3,4],2));
+//using 1 loop O(n)
+const towSumC = (arr,target) =>{
+  res = []
+  for(let i=0; i<arr.length; i++){
+    if(arr.includes(target-arr[i]) && i !== arr.indexOf(arr[i])){
+      res.push(i, arr.indexOf(arr[i]))
+      return res
+    }
+  }
+  //else return empty array
+  return []
+}
+
+console.log(towSumC([1,1,3,4],2));
+// console.log(towSum([1,1,3,4],2));
